@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class AppMainCopyTest {
     @Test
@@ -26,6 +28,17 @@ public class AppMainCopyTest {
 
         //THEN
         Assertions.assertEquals(true, testResult);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "kekse, false",
+            "Keksesindsuperleckerundhabenvielekalorien, true"
+    })
+
+    public void paramstest(String s, boolean testResult){
+        Assertions.assertEquals(testResult, AppMainCopy.checkLengh(s));
+
     }
 
 }
